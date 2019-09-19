@@ -3,6 +3,7 @@
  */
 package com.framework.token.captcha;
 
+import com.framework.exception.AuthException;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import lombok.Setter;
@@ -61,14 +62,14 @@ public class KaptchaImage {
         }
     }
 
-    public static boolean validateVerify(String inputVerify) throws Exception {
+    public static boolean validateVerify(String inputVerify) {
         //获取当前线程绑定的request对象
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         // 不分区大小写
         // 这个validateCode是在servlet中存入session的名字
         Object object = request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         if (ObjectUtils.isEmpty(object)) {
-            throw new Exception("Verification code expiration");
+            throw new AuthException("Verification code expiration");
         }
 
         String validateCode = ((String) object).toLowerCase();
