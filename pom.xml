@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.framework.token</groupId>
     <artifactId>jwtr-spring-boot-starter</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.1.RELEASE</version>
     <name>jwtr-spring-boot-starter</name>
     <description>JSON web token Redis令牌</description>
 
