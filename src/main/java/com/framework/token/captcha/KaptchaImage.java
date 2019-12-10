@@ -8,6 +8,7 @@ import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ import java.awt.image.BufferedImage;
 @Controller
 public class KaptchaImage {
 
+    @Lazy
     @Autowired
     private Producer captchaProducer;
 
