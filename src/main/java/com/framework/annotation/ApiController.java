@@ -19,7 +19,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @RestController
-@RequestMapping("/api/")
 public @interface ApiController {
 
     boolean sign() default true;//是否需要验证签名

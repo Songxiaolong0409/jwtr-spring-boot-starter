@@ -19,7 +19,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @RestController
-@RequestMapping("/app/")
 public @interface TokenController {
 
 }
