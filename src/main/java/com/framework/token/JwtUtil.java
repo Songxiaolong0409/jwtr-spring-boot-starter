@@ -26,6 +26,15 @@ public class JwtUtil {
 
     public static final String USERNAME = "username";
 
+    public static String generateToken(Map<String, Object> map) {
+        String jwt = Jwts.builder()
+                .setClaims(map)
+                .setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 1000 hour
+                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .compact();
+        return "Bearer " + jwt; //jwt前面一般都会加Bearer
+    }
+
     /**
      * 生成一个有效期1000小时的jwt Token
      *
@@ -36,12 +45,7 @@ public class JwtUtil {
         Map<String, Object> map = new HashMap<>();
         //you can put any data in the map
         map.put(USERNAME, username);
-        String jwt = Jwts.builder()
-                .setClaims(map)
-                .setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 1000 hour
-                .signWith(SignatureAlgorithm.HS512, SECRET)
-                .compact();
-        return "Bearer " + jwt; //jwt前面一般都会加Bearer
+        return generateToken(map);
     }
 
     /**
