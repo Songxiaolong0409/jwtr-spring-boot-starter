@@ -4,6 +4,8 @@
 package com.framework.token;
 
 import com.framework.exception.AuthException;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -65,5 +67,27 @@ public class JwtUtil {
         } catch (Exception e) {
             throw new AuthException("Invalid Token. " + e.getMessage());
         }
+    }
+
+    /**
+     * 获取token中的失效时间
+     * @param token
+     * @return
+     */
+    public static Date getTokenExpiration(String token){
+        Date date = null;
+        try{
+            Claims claims = Jwts.parser().
+                    setSigningKey(SECRET)
+                    .parseClaimsJws(token.replace("Bearer ", ""))
+                    .getBody();
+            //未失效，正常获取
+            date = claims.getExpiration();
+        }catch (ExpiredJwtException e){
+            //已经失效了，改从异常中获取
+            date = e.getClaims().getExpiration();
+        }
+
+        return date;
     }
 }
