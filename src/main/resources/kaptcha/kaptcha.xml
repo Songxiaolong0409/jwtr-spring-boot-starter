@@ -19,7 +19,7 @@
                         <!-- 边框颜色，合法值： r,g,b (and optional alpha) 或者 white,black,blue. 默认：black-->
                         <prop key="kaptcha.border.color">105,179,90</prop>
                         <!-- 字体颜色，合法值： r,g,b  或者 white,black,blue. 默认：black -->
-                        <prop key="kaptcha.textproducer.font.color">208,79,88</prop>
+                        <prop key="kaptcha.textproducer.font.color">60,95,128</prop>
                         <!-- 图片宽 默认：200-->
                         <prop key="kaptcha.image.width">160</prop>
                         <!-- 图片高 默认：50 -->
@@ -42,7 +42,7 @@
                         -->
                         <prop key="kaptcha.obscurificator.impl">com.framework.token.captcha.NoGimpy</prop>
                         <!-- 干扰颜色，合法值： r,g,b 或者 white,black,blue. 默认：black -->
-                        <prop key="kaptcha.noise.color">208,79,88</prop>
+                        <prop key="kaptcha.noise.color">60,95,128</prop>
                         <!-- 干扰实现类，
                           默认：com.google.code.kaptcha.impl.DefaultNoise
                         无干扰：com.google.code.kaptcha.impl.NoNoise
